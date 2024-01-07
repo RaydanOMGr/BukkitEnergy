@@ -101,6 +101,5 @@ public class EnergyFactory<T extends IEnergyStorage> extends SimpleReflection<T>
 
         return Optional.of(this.energyBlocksRegistered.get(location));
     }
-
 }
 

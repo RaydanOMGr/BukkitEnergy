@@ -13,13 +13,16 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class EnergyStorageData{
+public class EnergyStorageData {
 
     protected int storedEnergy = 0;
     protected int maxEnergy = Integer.MAX_VALUE;
     protected final ConcurrentHashMap<BlockFace, IOType> allowedFaces = new ConcurrentHashMap<>();
-    protected EnergyStorageData(final int storedEnergy, final int maxEnergy, final ConcurrentHashMap<BlockFace, IOType> allowedFaces) {
-
+    protected EnergyStorageData(final int storedEnergy, final int maxEnergy,
+                                final ConcurrentHashMap<BlockFace, IOType> allowedFaces) {
+        this.storedEnergy = storedEnergy;
+        this.maxEnergy = maxEnergy;
+        this.allowedFaces.putAll(allowedFaces);
     }
 
     /**
