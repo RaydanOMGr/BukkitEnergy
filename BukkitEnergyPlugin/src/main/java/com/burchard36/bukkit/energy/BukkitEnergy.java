@@ -17,7 +17,6 @@ import java.util.concurrent.atomic.AtomicInteger;
  * Most plugins should use this as a standard energy
  */
 public class BukkitEnergy implements IEnergyStorage {
-
     protected final Block block;
     protected final AtomicInteger storedEnergy = new AtomicInteger(0);
     protected final AtomicInteger maxStoredEnergy = new AtomicInteger(Integer.MAX_VALUE);
@@ -56,7 +55,7 @@ public class BukkitEnergy implements IEnergyStorage {
 
     @Override
     public final int getMaxEnergyStorage() {
-        return Integer.MAX_VALUE;
+        return this.maxStoredEnergy.get();
     }
 
     @Override

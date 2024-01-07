@@ -30,8 +30,8 @@ public class EnergyFactory<T extends IEnergyStorage> extends SimpleReflection<T>
 
     /**
      * To better make this feel vanilla, we will write the IEnergyStorage -> PDC on every world save
-     * This will also save on performance splitting and making out own save (We can still create a custom event for other plugins
-     * to listen to if this will be needed)
+     * This will also save on performance splitting and making out own save
+     * (We can still create a custom event for other plugins to listen to if this will be needed)
      *
      * And yes, only the world save will have the IES -> PDC flashed in this event
      * @param saveEvent {@link WorldSaveEvent} provided by Bukkit/Spigot/Paper/Whatever weird fucking fork your using
@@ -74,7 +74,7 @@ public class EnergyFactory<T extends IEnergyStorage> extends SimpleReflection<T>
      */
     public final @NonNull Optional<T> createEnergyBlock(final @NonNull Block block) {
         if (this.isEnergyBlock(block)) return Optional.empty();
-        Bukkit.broadcastMessage("createEnergyBlock");
+        //Bukkit.broadcastMessage("createEnergyBlock");
         final T energyImpl = this.newInstance(block);
         EnergyStorageData.deserializeTo(energyImpl);
         return Optional.of(this.energyBlocksRegistered.getOrDefault(block.getLocation(), energyImpl));
@@ -95,7 +95,7 @@ public class EnergyFactory<T extends IEnergyStorage> extends SimpleReflection<T>
                 energyImpl.deserialize(EnergyStorageData.serializeFrom(dataContainer));
             }
 
-            Bukkit.broadcastMessage("Computing for absent returning %s".formatted(energyImpl.toString()));
+            //Bukkit.broadcastMessage("Computing for absent returning %s".formatted(energyImpl.toString()));
             return energyImpl;
         });
 
